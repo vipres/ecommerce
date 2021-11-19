@@ -13,8 +13,16 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->sentence(2);
         return [
-            //
+            'name' => $name,
+            'slug',
+            'description',
+            'price',
+            'subcategory_id',
+            'brand_id',
+            'status',
+            'quantity',
         ];
     }
 }
