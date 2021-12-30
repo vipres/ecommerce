@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Category;
 
+
 class CategoryFactory extends Factory
 {
 
@@ -16,6 +17,7 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+
         return [
             'image' =>'categories/'. $this->faker->image('public/storage/categories', 640, 480, null, false),
         ];
