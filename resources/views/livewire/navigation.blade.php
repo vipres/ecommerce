@@ -1,4 +1,9 @@
-<header class="bg-gray-800">
+<style>
+    #navigation-menu{
+        height: calc(100vh - 4rem);
+    }
+</style>
+<header class="bg-gray-800 sticky top-0">
     <div class="container flex items-center h-16 ">
         <a class="flex flex-col items-center justify-center px-4 bg-white bg-opacity-25 text-white cursor-pointer font-semibold h-full">
             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -71,4 +76,45 @@
         @livewire('dropdown-cart')
 
     </div>
+
+    <nav id= "navigation-menu" class="bg-gray-700 bg-opacity-25 w-full absolute">
+        <div class="container h-full">
+            <div class="grid grid-cols-4 h-full relative">
+                <ul class="bg-white">
+                   @foreach ($categories as $category)
+                        <li class="text-gray-700 hover:bg-orange-500 hover:text-white">
+                            <a href="" class="py-2 px-4 text-sm flex items-center">
+                                <span class="flex justify-center w-9">
+                                    {!! $category->icon !!}
+                                </span>
+                                {{ $category->name }}
+                            </a>
+                            <div class="bg-red-500 absolute w-3/4  h-full top-0 right-0 hidden">
+
+                            </div>
+                        </li>
+                   @endforeach
+                </ul>
+                <div class="col-span-3 bg-gray-100">
+                    <div class="grid grid-cols-4 p-4">
+                        <div>
+                            <p class="text-lg font-bold text-center text-gray-600 mb-3">Subcategorías</p>
+                            <ul>
+                                @foreach ($categories->first()->subcategories as $subcategory)
+                                    <li>
+                                        <a href="" class="text-gray-500 font-semibold inline-block py-1 px-4 hover:text-orange-500">
+                                            {{ $subcategory->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="col-span-3">
+                            <img class="h64 w-full object-cover object-center" src="{{Storage::url($categories->first()->image)}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 </header>
